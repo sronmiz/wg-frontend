@@ -13,7 +13,6 @@ const refreshToken = () => {
 axiosAgent.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const originalRequest = error.config;
     if (error.response.status === 401) {
       try {
         await refreshToken();
