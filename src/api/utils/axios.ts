@@ -1,12 +1,14 @@
-import axios from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import { config } from "../../config";
 
-export const axiosAgent = axios.create({
+const agentConfig: AxiosRequestConfig = {
   withCredentials: true,
-});
+};
+
+export const axiosAgent: AxiosInstance = axios.create(agentConfig);
 
 const refreshToken = () => {
-  const REFRESH_URL = `${config.BACKEND_URL}/auth/refresh`;
+  const REFRESH_URL: string = `${config.BACKEND_URL}/auth/refresh`;
   return axios.post(REFRESH_URL);
 };
 
